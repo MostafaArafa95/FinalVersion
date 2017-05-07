@@ -6,26 +6,33 @@
     android:gravity="bottom"
     android:orientation="horizontal">
 
+
+    <Spinner
+        android:id="@+id/EncType"
+        android:layout_width="86dp"
+        android:layout_height="wrap_content" />
+
     <EditText
-        android:id="@+id/sendingText"
-        android:layout_width="match_parent"
+        android:id="@+id/EncKey"
+        android:layout_width="231dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:textColorHint="#CFD8DC"
+        android:hint="Key"
         android:textColor="#CFD8DC"
-        android:hint="Write a message"
-        />
+        android:textColorHint="#CFD8DC" />
 
 
     <ImageButton
-        android:id="@+id/button_send"
+        android:id="@+id/applyEnc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="5"
         android:background="@android:drawable/list_selector_background"
         android:padding="4dp"
+        android:onClick="changeEncryptionType"
 
-        android:src="@android:drawable/ic_menu_send" />
+        android:src="@android:drawable/stat_sys_upload_done" />
+
+
 
 
 </LinearLayout>

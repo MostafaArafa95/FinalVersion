@@ -8,12 +8,14 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.io.IOException;
@@ -31,6 +33,7 @@ import Encryptions.CryptographyManager;
 import Encryptions.NoConnectionException;
 
 public class MainActivity extends AppCompatActivity {
+    final private static String Encryptions[]={"playfair","railfence","rowtransposition","vigenere","monoalphabetic","aes","caesar"};
     ScrollView mainScrollView;
     RelativeLayout mainRelativeLayout;
     LinearLayout lastLinearLayout;
@@ -58,6 +61,14 @@ public class MainActivity extends AppCompatActivity {
                 text.setText("");
             }
         });
+
+        //spinner
+        Spinner spinner = (Spinner) findViewById(R.id.EncType);
+
+        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, Encryptions); //selected item will look like a spinner set from XML
+        spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(spinnerArrayAdapter);
+
 
         //setting up
 
@@ -168,6 +179,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    public void changeEncryptionType(View v){
+
+        fillIn.setKey(((EditText)findViewById(R.id.EncKey)).getText().toString());
+        fillIn.setEncryptionType(((Spinner)findViewById(R.id.EncType)).getSelectedItem().toString());
     }
 
 }
